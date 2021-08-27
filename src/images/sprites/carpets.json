@@ -1,0 +1,39 @@
+{"frames": {
+
+"carpet_01.png":
+{
+	"frame": {"x":0,"y":0,"w":94,"h":99},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":99},
+	"sourceSize": {"w":94,"h":99}
+},
+"carpet_02.png":
+{
+	"frame": {"x":94,"y":0,"w":122,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":122,"h":100},
+	"sourceSize": {"w":122,"h":100}
+},
+"carpet_03.png":
+{
+	"frame": {"x":216,"y":0,"w":126,"h":103},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":126,"h":103},
+	"sourceSize": {"w":126,"h":103}
+}},
+"animations": {
+	"carpet": ["carpet_01.png","carpet_02.png","carpet_03.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "carpets.png",
+	"format": "RGBA8888",
+	"size": {"w":342,"h":103},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:333c1b3f56a696b30ba81b5507409a6a:bd1ac58434c037fe9bd6082511a488f9:46485181a903fb0b4a82533360f632b3$"
+}
+}
