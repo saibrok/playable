@@ -1,3 +1,4 @@
 import "./styles/main.scss";
-import './app.js'
-import './resources.js'
+import './app'
+import './loadingResources'
+import './room'

@@ -1,20 +1,20 @@
 {
   "frames": {
-    "carpet_01.png": {
+    "carpet_01": {
       "frame": { "x": 0, "y": 0, "w": 94, "h": 99 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 94, "h": 99 },
       "sourceSize": { "w": 94, "h": 99 }
     },
-    "carpet_02.png": {
+    "carpet_02": {
       "frame": { "x": 94, "y": 0, "w": 122, "h": 100 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 122, "h": 100 },
       "sourceSize": { "w": 122, "h": 100 }
     },
-    "carpet_03.png": {
+    "carpet_03": {
       "frame": { "x": 216, "y": 0, "w": 126, "h": 103 },
       "rotated": false,
       "trimmed": false,
@@ -22,9 +22,7 @@
       "sourceSize": { "w": 126, "h": 103 }
     }
   },
-  "animations": {
-    "carpet": ["carpet_01.png", "carpet_02.png", "carpet_03.png"]
-  },
+  "animations": {},
   "meta": {
     "app": "https://www.codeandweb.com/texturepacker",
     "version": "1.0",

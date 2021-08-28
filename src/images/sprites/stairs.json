@@ -1,27 +1,27 @@
 {
   "frames": {
-    "new_stair_01.png": {
+    "new_stair_01": {
       "frame": { "x": 0, "y": 0, "w": 482, "h": 615 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 482, "h": 615 },
       "sourceSize": { "w": 482, "h": 615 }
     },
-    "new_stair_02.png": {
+    "new_stair_02": {
       "frame": { "x": 482, "y": 0, "w": 492, "h": 612 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 492, "h": 612 },
       "sourceSize": { "w": 492, "h": 612 }
     },
-    "new_stair_03.png": {
+    "new_stair_03": {
       "frame": { "x": 974, "y": 0, "w": 480, "h": 616 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 480, "h": 616 },
       "sourceSize": { "w": 480, "h": 616 }
     },
-    "old_stair.png": {
+    "old_stair": {
       "frame": { "x": 1454, "y": 0, "w": 557, "h": 516 },
       "rotated": false,
       "trimmed": false,
@@ -29,9 +29,7 @@
       "sourceSize": { "w": 557, "h": 516 }
     }
   },
-  "animations": {
-    "new_stair": ["new_stair_01.png", "new_stair_02.png", "new_stair_03.png"]
-  },
+  "animations": {},
   "meta": {
     "app": "https://www.codeandweb.com/texturepacker",
     "version": "1.0",
