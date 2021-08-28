@@ -39,5 +39,3 @@ app.stage.on("loaded", () => {
     }
   });
 });
-
-console.log(container);
