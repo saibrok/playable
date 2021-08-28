@@ -11,6 +11,7 @@
   "author": "Litvin Sergey <litvinsergey@list.ru>",
   "license": "ISC",
   "dependencies": {
+    "animejs": "^3.2.1",
     "pixi.js": "^6.1.2"
   },
   "devDependencies": {
