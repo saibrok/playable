@@ -70,7 +70,7 @@ export function displayResources(container) {
 
   let oldStairs = new PIXI.Sprite(stairs["old_stairs"]);
   oldStairs.x = 833;
-  oldStairs.y = 134;
+  oldStairs.y = 124;
   container.addChild(oldStairs);
 
   let newStairs01 = new PIXI.Sprite(stairs["new_stairs_01"]);
@@ -227,5 +227,13 @@ export function displayResources(container) {
     gsBtn,
     overlay,
     continueBanner,
+    bookStand,
+    globe,
+    plant01,
+    plant02,
+    plant03,
+    sofa,
+    table,
+    logo,
   };
 }

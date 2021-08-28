@@ -2,45 +2,71 @@ import anime from "animejs/lib/anime.es.js";
 
 const app = window.app;
 
-console.log(app);
-
 app.stage.on("loaded", () => {
   start();
 });
 
 function start() {
   anime({
-    targets: app.objects.hammer,
+    targets: 'div',
     translateX: 250,
-    rotate: "1turn",
-    backgroundColor: "#FFF",
-    duration: 800,
+    rotate: '1turn',
+    backgroundColor: '#FFF',
+    duration: 800
   });
+
+  app.objects.logo.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.logo, "left", 100, 200, 5);
+  }, 1100);
+
+  app.objects.hammer.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.hammer, "down", 100, 200, 5);
+  }, 1300);
+
+  app.objects.bookStand.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.bookStand, "down", 100, 200, 5);
+  }, 300);
+
+  app.objects.globe.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.globe, "down", 100, 200, 5);
+  }, 400);
+
+  app.objects.plant01.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.plant01, "down", 100, 200, 5);
+  }, 500);
+
+  app.objects.plant02.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.plant02, "down", 100, 200, 5);
+  }, 600);
+
+  app.objects.plant03.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.plant03, "down", 100, 200, 5);
+  }, 700);
+
+  app.objects.sofa.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.sofa, "down", 100, 200, 5);
+  }, 800);
+
+  app.objects.table.alpha = 0;
+  setTimeout(() => {
+    quadAppearance(app.objects.table, "down", 100, 200, 5);
+  }, 900);
+
+  pulse(app.objects.hammer);
+  pulse(app.objects.gsBtn);
 
   app.objects.hammer.on("pointerdown", onClickHammer(app.objects.hammer));
   app.objects.btnOk01.on("pointerdown", onClickOk);
   app.objects.btnOk02.on("pointerdown", onClickOk);
   app.objects.btnOk03.on("pointerdown", onClickOk);
-
-  let direction = 1;
-
-  app.objects.gsBtn.pivot.set(
-    app.objects.gsBtn.width / 2,
-    app.objects.gsBtn.height / 2
-  );
-  app.objects.gsBtn.x += app.objects.gsBtn.width / 2;
-  app.objects.gsBtn.y += app.objects.gsBtn.height / 2;
-
-  app.ticker.add((delta) => {
-    if (app.objects.gsBtn.scale.x < 0.95) {
-      direction = 1;
-    } else if (app.objects.gsBtn.scale.x > 1.05) {
-      direction = -1;
-    }
-
-    app.objects.gsBtn.scale.x += 0.002 * delta * direction;
-    app.objects.gsBtn.scale.y += 0.002 * delta * direction;
-  });
 }
 
 function onClickHammer() {
@@ -122,6 +148,8 @@ function onClickCarpet(choosed, btn, stairs) {
         requestAnimationFrame(update);
       }
     }
+
+    quadAppearance(stairs, "down", 100, 500, 4);
   };
 }
 
@@ -148,7 +176,6 @@ function onClickOk() {
   }, 1000);
 }
 
-/////////////////////////
 function appearance(object, frames = 20) {
   object.pivot.set(object.width / 2, object.height / 2);
   object.x += object.width / 2;
@@ -172,23 +199,85 @@ function appearance(object, frames = 20) {
   }
 }
 
-function animate({timing, draw, duration}) {
+/**
+ * Анимация появления по параболической кривой
+ * @param {Object} object DisplayObject
+ * @param {string} direction направление появления
+ * @param {number} distance расстояние появления
+ * @param {number} time время появления
+ * @param {number} speed скорость
+ */
 
-  let start = performance.now();
+function quadAppearance(object, direction, distance, time, speed) {
+  const directionOptions = {
+    up: { coordinate: "y", vector: 1 },
+    down: { coordinate: "y", vector: -1 },
+    left: { coordinate: "x", vector: 1 },
+    right: { coordinate: "x", vector: -1 },
+  };
+  const startPosition =
+    object[directionOptions[direction].coordinate] +
+    distance * directionOptions[direction].vector;
 
-  requestAnimationFrame(function animate(time) {
-    // timeFraction изменяется от 0 до 1
-    let timeFraction = (time - start) / duration;
-    if (timeFraction > 1) timeFraction = 1;
+  function quad(timeFraction) {
+    return Math.pow(timeFraction, speed);
+  }
 
-    // вычисление текущего состояния анимации
-    let progress = timing(timeFraction);
+  let quadEaseOut = makeEaseOut(quad);
 
-    draw(progress); // отрисовать её
+  function makeEaseOut(timing) {
+    return function (timeFraction) {
+      return 1 - timing(1 - timeFraction);
+    };
+  }
 
-    if (timeFraction < 1) {
-      requestAnimationFrame(animate);
+  animate({
+    duration: time,
+    timing: quadEaseOut,
+    draw: function (progress) {
+      object[directionOptions[direction].coordinate] =
+        startPosition -
+        distance * directionOptions[direction].vector * progress;
+      object.alpha = 1 * progress;
+    },
+  });
+
+  function animate({ timing, draw, duration }) {
+    let start = performance.now();
+
+    requestAnimationFrame(function animate(time) {
+      let timeFraction = (time - start) / duration;
+
+      if (timeFraction > 1) {
+        timeFraction = 1;
+      }
+
+      let progress = timing(timeFraction);
+
+      draw(progress);
+
+      if (timeFraction < 1) {
+        requestAnimationFrame(animate);
+      }
+    });
+  }
+}
+
+function pulse(object) {
+  let direction = 1;
+
+  object.pivot.set(object.width / 2, object.height / 2);
+  object.x += object.width / 2;
+  object.y += object.height / 2;
+
+  app.ticker.add((delta) => {
+    if (object.scale.x < 0.95) {
+      direction = 1;
+    } else if (object.scale.x > 1.05) {
+      direction = -1;
     }
 
+    object.scale.x += 0.002 * delta * direction;
+    object.scale.y += 0.002 * delta * direction;
   });
 }
