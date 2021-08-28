@@ -1,2 +1,3 @@
 import "./styles/main.scss";
-import * as PIXI from "pixi.js";
+import './app.js'
+import './resources.js'
