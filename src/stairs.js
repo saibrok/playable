@@ -52,15 +52,13 @@ function start() {
     quadAppearance(app.objects.table, "down", 100, 200, 5);
   }, 900);
 
-  console.log(app.objects.gsBtn.y);
-  const cur = app.objects.gsBtn.y;
-
+  const currentY = app.objects.gsBtn.y;
   app.objects.gsBtn.y += 400;
 
   anime({
     targets: app.objects.gsBtn,
-    y: cur,
-    easing: 'spring(1, 80, 10, 0)',
+    y: currentY,
+    easing: "easeOutBounce",
     duration: 800,
   });
 

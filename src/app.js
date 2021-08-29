@@ -5,6 +5,8 @@ const app = window.app = new PIXI.Application({
   width: 1390,
   height: 640,
   backgroundColor: 0x333333,
+  antialias: true,
+  resolution: 1,
 });
 
 function resize() {
