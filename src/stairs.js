@@ -7,14 +7,6 @@ app.stage.on("loaded", () => {
 });
 
 function start() {
-  anime({
-    targets: 'div',
-    translateX: 250,
-    rotate: '1turn',
-    backgroundColor: '#FFF',
-    duration: 800
-  });
-
   app.objects.logo.alpha = 0;
   setTimeout(() => {
     quadAppearance(app.objects.logo, "left", 100, 200, 5);
@@ -60,8 +52,22 @@ function start() {
     quadAppearance(app.objects.table, "down", 100, 200, 5);
   }, 900);
 
+  console.log(app.objects.gsBtn.y);
+  const cur = app.objects.gsBtn.y;
+
+  app.objects.gsBtn.y += 400;
+
+  anime({
+    targets: app.objects.gsBtn,
+    y: cur,
+    easing: 'spring(1, 80, 10, 0)',
+    duration: 800,
+  });
+
   pulse(app.objects.hammer);
-  pulse(app.objects.gsBtn);
+  setTimeout(() => {
+    pulse(app.objects.gsBtn);
+  }, 850);
 
   app.objects.hammer.on("pointerdown", onClickHammer(app.objects.hammer));
   app.objects.btnOk01.on("pointerdown", onClickOk);
@@ -170,9 +176,36 @@ function onClickOk() {
   app.objects.btnOk02.visible = false;
   app.objects.btnOk03.visible = false;
 
+  app.objects.overlay.alpha = 0;
+  app.objects.continueBanner.alpha = 0;
+
   setTimeout(() => {
     app.objects.overlay.visible = true;
     app.objects.continueBanner.visible = true;
+    app.objects.continueBanner.scale.x = 0.5;
+    app.objects.continueBanner.scale.y = 0.5;
+
+    anime({
+      targets: app.objects.overlay,
+      alpha: 1,
+      easing: "linear",
+      duration: 300,
+    });
+
+    anime({
+      targets: app.objects.continueBanner,
+      alpha: 1,
+      easing: "linear",
+      duration: 800,
+    });
+
+    anime({
+      targets: app.objects.continueBanner.scale,
+      x: 1,
+      y: 1,
+      easing: "easeOutBounce",
+      duration: 800,
+    });
   }, 1000);
 }
 
@@ -265,10 +298,6 @@ function quadAppearance(object, direction, distance, time, speed) {
 
 function pulse(object) {
   let direction = 1;
-
-  object.pivot.set(object.width / 2, object.height / 2);
-  object.x += object.width / 2;
-  object.y += object.height / 2;
 
   app.ticker.add((delta) => {
     if (object.scale.x < 0.95) {

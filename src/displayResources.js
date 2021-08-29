@@ -1,5 +1,5 @@
 export function displayResources(container) {
-  //** background */
+  /* background */
 
   let background = new PIXI.Sprite(app.loader.resources["background"].texture);
   container.addChild(background);
@@ -19,14 +19,14 @@ export function displayResources(container) {
   continueBanner.visible = false;
   container.addChild(continueBanner);
 
-  //** austin */
+  /* austin */
 
   let austin = new PIXI.Sprite(app.loader.resources["austin"].texture);
   austin.x = 696;
   austin.y = 113;
   container.addChild(austin);
 
-  //** decorations */
+  /* decorations */
 
   const decorations = app.loader.resources["decorations"].textures;
 
@@ -64,7 +64,7 @@ export function displayResources(container) {
   table.y = 196;
   container.addChild(table);
 
-  //** stairs */
+  /* stairs */
 
   const stairs = app.loader.resources["stairs"].textures;
 
@@ -91,7 +91,7 @@ export function displayResources(container) {
   newStairs03.visible = false;
   container.addChild(newStairs03);
 
-  //** buttons */
+  /* buttons */
 
   const buttons = app.loader.resources["buttons"].textures;
 
@@ -101,6 +101,9 @@ export function displayResources(container) {
   gsBtn.interactive = true;
   gsBtn.buttonMode = true;
   gsBtn.zIndex = 101;
+  gsBtn.anchor.set(0.5);
+  gsBtn.x += gsBtn.width / 2;
+  gsBtn.y += gsBtn.height / 2;
   container.addChild(gsBtn);
 
   let logo = new PIXI.Sprite(buttons["logo"]);
@@ -113,6 +116,9 @@ export function displayResources(container) {
   hammer.y = 258;
   hammer.interactive = true;
   hammer.buttonMode = true;
+  hammer.anchor.set(0.5);
+  hammer.x += hammer.width / 2;
+  hammer.y += hammer.height / 2;
   container.addChild(hammer);
 
   let circle01 = new PIXI.Sprite(buttons["circle"]);
@@ -184,7 +190,7 @@ export function displayResources(container) {
   btnOk03.visible = false;
   container.addChild(btnOk03);
 
-  //** carpets */
+  /* carpets */
 
   const carpets = app.loader.resources["carpets"].textures;
 
