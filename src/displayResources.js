@@ -109,6 +109,7 @@ export function displayResources(container) {
   let logo = new PIXI.Sprite(buttons["logo"]);
   logo.x = 32;
   logo.y = 5;
+  logo.zIndex = 101;
   container.addChild(logo);
 
   let hammer = new PIXI.Sprite(buttons["hammer"]);
