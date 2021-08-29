@@ -1,7 +1,5 @@
 import anime from "animejs/lib/anime.es.js";
 
-const app = window.app;
-
 app.stage.on("loaded", () => {
   start();
 });

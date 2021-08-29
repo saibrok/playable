@@ -1,4 +1,8 @@
-export function displayResources(container) {
+const container = new PIXI.Container();
+container.sortableChildren = true;
+app.stage.addChild(container);
+
+export function displayResources() {
   /* background */
 
   let background = new PIXI.Sprite(app.loader.resources["background"].texture);
